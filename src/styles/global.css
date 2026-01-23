@@ -1,18 +1,253 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: #111827;
-  background: #0b1224;
-  margin: 0;
+/* Base Styles */
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-dark-950 text-white font-sans;
+    font-size: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+    line-height: 1.6;
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  /* Fluid Typography Scale */
+  h1 {
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    @apply tracking-tighter leading-[1.1];
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+    @apply tracking-tight leading-tight;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+    @apply tracking-tight;
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+  }
+
+  a {
+    @apply text-electric-blue hover:text-electric-blue/80 transition-colors;
+  }
+
+  /* Smooth scroll handled by Lenis now, but fallback */
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-brand-blue text-white;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+/* Custom Components */
+@layer components {
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  /* Section Spacing - Premium generous spacing */
+  .section {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Gradient Text - Animated & Refined */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-blue via-brand-green to-brand-amber bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient;
+  }
+
+  /* Premium Glass Card */
+  .glass-card {
+    @apply bg-dark-900/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  /* Grid Pattern Background - Subtler */
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(51, 65, 85, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(51, 65, 85, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Noise Overlay */
+  .noise-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* Metric Number Style */
+  .metric-number {
+    @apply font-mono text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter;
+  }
+
+  /* Risk Badge */
+  .risk-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-semantic-warning/10 text-semantic-warning border border-semantic-warning/20 text-xs uppercase tracking-widest font-bold;
+  }
 }
 
-code, pre {
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+/* Custom Utilities */
+@layer utilities {
+
+  /* Text Shadow - Premium Soft */
+  .text-shadow {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Hover Lift - Physics based feel */
+  .hover-lift {
+    @apply transition-transform duration-500 ease-out will-change-transform;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  /* Focus Visible */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-950;
+  }
+
+  /* Reveal Animation Utility Class */
+  .reveal-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-1000 ease-out;
+  }
+
+  .reveal-on-scroll.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Animations */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Aurora Background Animation */
+@keyframes aurora {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  33% {
+    background-position: 0% 0%, 100% 100%;
+  }
+
+  66% {
+    background-position: 100% 0%, 0% 100%;
+  }
+
+  100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+}
+
+.bg-aurora {
+  background-color: #0A0E1A;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(212, 72%, 29%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(161, 94%, 30%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(38, 92%, 50%, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(212, 72%, 29%, 0.1) 0px, transparent 50%);
+  background-size: 150% 150%;
+  animation: aurora 20s ease infinite alternate;
+}
+
+/* Scrollbar Styling - Minimal & Premium */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-700/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-blue;
 }

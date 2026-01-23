@@ -1,0 +1,61 @@
+---
+const faqs = [
+  {
+    question: "¿Cuál es el capital mínimo recomendado?",
+    answer: "Recomiendo un mínimo de $10,000 - $15,000 USD para cuentas de futuros. Cuentas más pequeñas (micro-futuros) pueden operar con $3,000 - $5,000, pero la gestión de riesgo es más estricta. Si este capital te parece alto, probablemente no estás listo para la volatilidad inherente a mis sistemas."
+  },
+  {
+    question: "¿Qué plataformas utilizas?",
+    answer: "Me especializo exclusivamente en NinjaTrader 8. Todos mis indicadores y estrategias están codificados en C# (NinjaScript). Es la plataforma estándar para trading algorítmico profesional de futuros."
+  },
+  {
+    question: "¿Garantizas resultados?",
+    answer: "Absolutamente NO. Nadie honesto en esta industria puede garantizar resultados. Garantizo que el sistema se sigue con disciplina, garantizo transparencia total en el track record, y garantizo que no ocultaré las pérdidas. Los mercados son probabilísticos, no determinísticos."
+  },
+  {
+    question: "¿Cómo funciona la mentoría?",
+    answer: "Es un proceso 1-a-1 donde te enseño a pescar, no te doy el pescado. Nos enfocamos en enseñarte a programar y validar tus propias estrategias en NinjaTrader. No es un curso básico de 'qué es una vela japonesa', es formación técnica para desarrollo de sistemas."
+  },
+  {
+    question: "¿Por qué muestras un drawdown de 48%?",
+    answer: "Porque ocurrió. Y ocultarlo sería mentir. Esa caída sucedió durante una condición de mercado específica donde la volatilidad extrema afectó al sistema. El sistema se recuperó y alcanzó nuevos máximos (94% ROI), pero es crucial que entiendas que ese riesgo existe."
+  },
+  {
+    question: "¿Ofreces pruebas gratuitas?",
+    answer: "No. La calidad de la información y los sistemas tiene un costo. Todo el track record es público para que evalúes el desempeño antes de comprometerte."
+  }
+];
+---
+
+<section id="faq" class="section bg-dark-950">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
+        Preguntas <span class="text-brand-blue">Frecuentes</span>
+      </h2>
+      <p class="text-dark-300 text-lg">
+        Respuestas directas, sin letra chica.
+      </p>
+    </div>
+    
+    <!-- FAQ Grid -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq) => (
+        <details class="group bg-dark-900 border border-dark-700 rounded-xl overflow-hidden transition-all duration-300 open:border-brand-blue open:shadow-glow-blue/20">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none text-white font-medium hover:text-brand-blue transition-colors">
+            <span>{faq.question}</span>
+            <span class="transform group-open:rotate-180 transition-transform duration-300 text-brand-blue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-dark-300 leading-relaxed border-t border-dark-800/50 pt-4">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

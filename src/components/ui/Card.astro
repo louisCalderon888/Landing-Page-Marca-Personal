@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: 'default' | 'premium' | 'transparent';
+  hover?: boolean;
+  class?: string;
+}
+
+const { 
+  variant = 'default', 
+  hover = true,
+  class: className = ''
+} = Astro.props;
+
+const variantClasses = {
+  default: 'bg-dark-900 border border-dark-700',
+  premium: 'bg-gradient-to-br from-brand-blue/10 to-brand-green/5 border-2 border-brand-blue',
+  transparent: 'bg-dark-900/50 backdrop-blur-sm border border-dark-700',
+};
+
+const hoverClasses = hover 
+  ? 'hover:border-brand-blue hover:shadow-glow-blue hover:-translate-y-1' 
+  : '';
+
+const baseClasses = 'rounded-xl p-6 transition-all duration-300';
+
+const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${hoverClasses} ${className}`;
+---
+
+<div class={combinedClasses}>
+  <slot />
+</div>

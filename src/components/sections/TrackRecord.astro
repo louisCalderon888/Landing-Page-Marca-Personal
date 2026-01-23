@@ -1,0 +1,108 @@
+---
+import Card from '../ui/Card.astro';
+---
+
+<section id="track-record" class="section bg-dark-950">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
+        Track Record <span class="text-brand-green">Verificado</span>
+      </h2>
+      <p class="text-dark-300 text-lg">
+        Transparencia total. Todos los resultados son verificables en tiempo real a través de Myfxbook. 
+        Sin cherry-picking. Sin edición. Solo datos reales.
+      </p>
+    </div>
+    
+    <!-- Main Metrics Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <!-- ROI Metric -->
+      <Card variant="premium">
+        <div class="text-center">
+          <div class="metric-number text-brand-green mb-2">94.2%</div>
+          <div class="text-dark-400 text-sm uppercase tracking-wider mb-3">Retorno Total</div>
+          <div class="text-xs text-dark-500">16 meses de operación</div>
+        </div>
+      </Card>
+      
+      <!-- Drawdown Metric -->
+      <Card variant="default">
+        <div class="text-center">
+          <div class="metric-number text-brand-amber mb-2">-48%</div>
+          <div class="text-dark-400 text-sm uppercase tracking-wider mb-3">Drawdown Máximo</div>
+          <div class="text-xs text-brand-amber">Alta volatilidad</div>
+        </div>
+      </Card>
+      
+      <!-- Win Rate Placeholder -->
+      <Card variant="default">
+        <div class="text-center">
+          <div class="metric-number text-brand-blue mb-2">—</div>
+          <div class="text-dark-400 text-sm uppercase tracking-wider mb-3">Win Rate</div>
+          <div class="text-xs text-dark-500">Actualizar con datos reales</div>
+        </div>
+      </Card>
+      
+      <!-- Profit Factor Placeholder -->
+      <Card variant="default">
+        <div class="text-center">
+          <div class="metric-number text-brand-blue mb-2">—</div>
+          <div class="text-dark-400 text-sm uppercase tracking-wider mb-3">Profit Factor</div>
+          <div class="text-xs text-dark-500">Actualizar con datos reales</div>
+        </div>
+      </Card>
+    </div>
+    
+    <!-- Myfxbook Widget -->
+    <Card variant="transparent" class="max-w-4xl mx-auto mb-12 overflow-hidden">
+      <div class="text-center py-8">
+        <h3 class="text-2xl font-bold text-white mb-6">Equity Curve en Vivo</h3>
+        
+        <div class="flex justify-center">
+          <a href="https://www.myfxbook.com/statements/10524558/statement.html" target="_blank" rel="noopener noreferrer" class="block transition-transform duration-300 hover:scale-[1.02]">
+            <img 
+              alt="Cartera888 Performance Widget" 
+              src="https://widgets.myfxbook.com/custom-widget?id=10524558&width=800&height=400&bart=0&linet=2&symbol=META&magic=-1&title=Cartera888&titles=16&bgColor=0F172A&gridColor=334155&lineColor=10B981&barColor=0F4C81&bar1Color=0F4C81&fontColor=CBD5E1&chartbgc=0F172A&equityColor=F59E0B"
+              class="rounded-lg shadow-2xl border border-dark-700 w-full max-w-full h-auto"
+            />
+          </a>
+        </div>
+        
+        <p class="text-xs text-dark-500 mt-4">
+          Click en el gráfico para ver el análisis completo en Myfxbook. <br/>
+          * Datos actualizados en tiempo real.
+        </p>
+      </div>
+    </Card>
+    
+    <!-- Risk Disclaimer -->
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-semantic-warning/5 border border-semantic-warning/30 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-semantic-warning" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-semantic-warning font-semibold mb-2">Advertencia de Riesgo Importante</h4>
+            <p class="text-dark-300 text-sm leading-relaxed">
+              Un drawdown del 48% significa que en el peor momento, la cuenta estuvo casi a la mitad de su valor. 
+              <strong>Esto es alta volatilidad y NO es apropiado para perfiles conservadores.</strong> 
+              Solo opera con capital que puedas permitirte perder completamente. 
+              Los resultados pasados no garantizan rendimientos futuros.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Honesty Statement -->
+    <div class="text-center mt-12">
+      <p class="text-dark-400 font-mono text-sm">
+        "El 90% de traders oculta sus drawdowns. Yo los muestro porque esa es la realidad del trading."
+      </p>
+    </div>
+  </div>
+</section>

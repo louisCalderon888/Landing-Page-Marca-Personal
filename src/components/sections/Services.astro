@@ -1,0 +1,145 @@
+---
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+
+const services = [
+  {
+    name: 'Señales Algorítmicas',
+    description: 'Recibe señales de trading generadas por algoritmos validados. Parámetros completos: entrada, stop, objetivo, tamaño de posición.',
+    price: '—',
+    period: 'mes',
+    features: [
+      'Señales diarias vía Telegram',
+      'Parámetros de entrada completos',
+      'Gestión de riesgo incluida',
+      'Acceso al track record en vivo',
+      'Soporte por chat',
+    ],
+    cta: 'Próximamente',
+    featured: false,
+  },
+  {
+    name: 'Mentoría 1-on-1',
+    description: 'Aprende a desarrollar tus propios sistemas algorítmicos en NinjaTrader. Sesiones personalizadas adaptadas a tu nivel.',
+    price: '—',
+    period: 'sesión',
+    features: [
+      'Sesiones individuales 1 hora',
+      'Revisión de código C#',
+      'Backtesting y validación',
+      'Desarrollo de estrategias',
+      'Material educativo exclusivo',
+      'Seguimiento continuo',
+    ],
+    cta: 'Consultar',
+    featured: true,
+  },
+  {
+    name: 'Desarrollo Personalizado',
+    description: 'Desarrollo de indicadores y estrategias custom para NinjaTrader según tus especificaciones y reglas de trading.',
+    price: '—',
+    period: 'proyecto',
+    features: [
+      'Indicadores custom en C#',
+      'Estrategias automatizadas',
+      'Backtesting completo',
+      'Documentación técnica',
+      'Soporte post-desarrollo',
+    ],
+    cta: 'Cotizar',
+    featured: false,
+  },
+];
+---
+
+<section id="services" class="section bg-dark-950">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
+        Servicios
+      </h2>
+      <p class="text-dark-300 text-lg">
+        No vendo sueños, vendo <span class="text-brand-green font-semibold">sistemas</span>. 
+        Elige el servicio que mejor se adapte a tu nivel y objetivos.
+      </p>
+    </div>
+    
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {services.map((service) => (
+        <Card 
+          variant={service.featured ? 'premium' : 'default'}
+          class={`flex flex-col ${service.featured ? 'lg:scale-105 lg:shadow-2xl' : ''}`}
+        >
+          {service.featured && (
+            <div class="mb-4">
+              <span class="inline-block px-3 py-1 rounded-full bg-brand-green/20 text-brand-green text-xs font-semibold uppercase tracking-wide">
+                Más Popular
+              </span>
+            </div>
+          )}
+          
+          <h3 class="text-2xl font-display font-bold text-white mb-3">
+            {service.name}
+          </h3>
+          
+          <p class="text-dark-300 text-sm mb-6 flex-grow">
+            {service.description}
+          </p>
+          
+          <!-- Price -->
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-mono font-bold text-white">USD {service.price}</span>
+              <span class="text-dark-400 text-sm">/ {service.period}</span>
+            </div>
+            <p class="text-xs text-dark-500 mt-2">
+              * Actualizar con precios reales
+            </p>
+          </div>
+          
+          <!-- Features -->
+          <ul class="space-y-3 mb-8">
+            {service.features.map((feature) => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-green flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-dark-300">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <!-- CTA Button -->
+          <Button 
+            variant={service.featured ? 'cta' : 'primary'}
+            class="w-full"
+            href="#contact"
+          >
+            {service.cta}
+          </Button>
+        </Card>
+      ))}
+    </div>
+    
+    <!-- Disclaimer -->
+    <div class="max-w-4xl mx-auto mt-12">
+      <Card variant="transparent" class="border-l-4 border-semantic-warning">
+        <div class="flex items-start gap-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-semantic-warning flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <h4 class="text-white font-semibold mb-2">Para traders serios únicamente</h4>
+            <p class="text-dark-300 text-sm leading-relaxed">
+              Estos servicios NO son apropiados si buscas "hacerte rico rápido", 
+              si no toleras la volatilidad, o si no estás dispuesto a seguir un sistema disciplinado. 
+              Se requiere capital de riesgo, conocimientos básicos de trading, y mentalidad de largo plazo.
+            </p>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>

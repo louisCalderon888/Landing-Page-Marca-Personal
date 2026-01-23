@@ -1,501 +1,57 @@
 ---
-import RiskNotice from "../components/RiskNotice.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import TrackRecord from '../components/sections/TrackRecord.astro';
+import About from '../components/sections/About.astro';
+import Services from '../components/sections/Services.astro';
+import Philosophy from '../components/sections/Philosophy.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Contact from '../components/sections/Contact.astro';
 
-const siteTitle = "Louis Calderon | Trading Algorítmico con Transparencia";
-import "../styles/global.css";
-
-const description =
-  "Trading algorítmico de alto rendimiento con transparencia total. Señales, mentoría y sistemas para traders serios que priorizan reglas sobre emociones.";
-const url = "https://example.com"; // TODO: reemplazar con tu dominio real
-const ogImage = "https://example.com/og-image.jpg"; // TODO: reemplazar si lo necesitas
-const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#track-record", label: "Track Record" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#sobre-mi", label: "Sobre mí" },
-  { href: "#blog", label: "Blog" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contacto", label: "Contacto" },
-];
+// Import global styles
+import '../styles/global.css';
 ---
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{siteTitle}</title>
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#1E3A8A" />
-    <link rel="canonical" href={url} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={url} />
-    <meta property="og:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=JetBrains+Mono:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <script type="application/ld+json">{JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Louis Calderon',
-      jobTitle: 'Algorithmic Trader',
-      url,
-      sameAs: [
-        'https://instagram.com/louiscalderon.co',
-      ],
-      brand: {
-        '@type': 'Brand',
-        name: 'Louis Calderon',
-        slogan: 'Trading Algorítmico con Transparencia',
-      },
-    })}</script>
-  </head>
-  <body class="bg-[#0B1224] text-slate-100">
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0B1224]/80 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 lg:px-6">
-        <div class="text-lg font-semibold tracking-tight text-white">Louis Calderon</div>
-        <nav class="hidden items-center gap-6 text-sm font-medium text-slate-200 md:flex">
-          {navLinks.map((link) => (
-            <a href={link.href} class="transition hover:text-white">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#contacto"
-          class="rounded-md bg-[#1E3A8A] px-4 py-2 text-sm font-semibold text-white shadow hover:bg-[#1b3578] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-        >
-          Unirme a las Señales
-        </a>
-      </div>
-    </header>
 
-    <main>
-      <section id="inicio" class="border-b border-white/5 bg-gradient-to-b from-[#0B1224] to-[#0f1a34]">
-        <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-2 lg:px-6 lg:py-20">
-          <div class="space-y-6">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Trading algorítmico · Transparencia · Disciplina</p>
-            <h1 class="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              Trading algorítmico de alto rendimiento con transparencia total
-            </h1>
-            <p class="max-w-2xl text-lg text-slate-200">
-              94% de rendimiento en 16 meses, con un drawdown máximo del 48%. Para traders que aceptan la realidad del riesgo.
-            </p>
-            <ul class="space-y-2 text-slate-100">
-              <li class="flex items-start gap-2">
-                <span class="mt-1 text-[#059669]">●</span>
-                <span>Estrategias 100% algorítmicas basadas en datos, no emociones.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1 text-[#059669]">●</span>
-                <span>Track record verificado y público vía Myfxbook.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-1 text-[#059669]">●</span>
-                <span>Mentoría y señales diseñadas para traders serios, no soñadores.</span>
-              </li>
-            </ul>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#track-record"
-                class="inline-flex items-center justify-center rounded-md bg-[#1E3A8A] px-5 py-3 text-sm font-semibold text-white shadow hover:bg-[#1b3578] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Ver Track Record
-              </a>
-              <a
-                href="#servicios"
-                class="inline-flex items-center justify-center rounded-md border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Ver Planes de Servicios
-              </a>
-            </div>
-            <RiskNotice message="Alto riesgo: esta cuenta ha sufrido un drawdown del 48%. No es apta para perfiles conservadores." />
-          </div>
-          <div class="flex items-center justify-center">
-            <div class="relative w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-4 shadow-2xl">
-              <div class="aspect-[3/4] w-full rounded-xl bg-gradient-to-br from-[#1E3A8A]/40 via-[#059669]/30 to-[#EA580C]/30" aria-hidden="true"></div>
-              <p class="mt-4 text-center text-sm text-slate-300">Placeholder para foto profesional frente a pantallas/charts.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="track-record" class="border-b border-white/5 bg-[#0f1a34] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Transparencia</p>
-              <h2 class="text-3xl font-bold text-white">Track record verificado</h2>
-              <p class="mt-2 max-w-3xl text-slate-200">
-                94% de rendimiento en 16 meses con un drawdown máximo del 48%. El widget de Myfxbook muestra datos en tiempo real.
-              </p>
-            </div>
-            <RiskNotice message="Este tipo de rendimiento viene acompañado de alta volatilidad. La cuenta estuvo cerca de la mitad de su valor en el peor punto." />
-          </div>
-
-          <div class="mt-8 grid gap-6 lg:grid-cols-2">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 shadow">
-              <div class="text-sm text-slate-300">
-                <!-- Myfxbook widget aquí: pega tu script embebido -->
-                <div class="aspect-video w-full rounded-lg border border-dashed border-white/20 bg-black/20"></div>
-              </div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow">
-              <h3 class="text-lg font-semibold text-white">Métricas clave</h3>
-              <dl class="mt-4 grid grid-cols-2 gap-4 text-sm text-slate-100">
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Retorno total</dt>
-                  <dd class="text-xl font-bold text-[#059669]">94%</dd>
-                </div>
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Periodo</dt>
-                  <dd class="text-xl font-bold text-white">16 meses</dd>
-                </div>
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Drawdown máximo</dt>
-                  <dd class="text-xl font-bold text-[#EA580C]">48%</dd>
-                </div>
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Win rate</dt>
-                  <dd class="text-xl font-bold text-white">—</dd>
-                </div>
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Profit factor</dt>
-                  <dd class="text-xl font-bold text-white">—</dd>
-                </div>
-                <div class="rounded-lg bg-white/5 p-3">
-                  <dt class="text-slate-300">Sharpe ratio</dt>
-                  <dd class="text-xl font-bold text-white">—</dd>
-                </div>
-              </dl>
-              <p class="mt-4 text-sm text-slate-300">
-                Este tipo de rendimiento viene acompañado de alta volatilidad. Si esto te incomoda, este servicio probablemente no es para ti.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="servicios" class="border-b border-white/5 bg-[#0B1224] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Servicios</p>
-              <h2 class="text-3xl font-bold text-white">Servicios para traders serios</h2>
-              <p class="mt-2 max-w-3xl text-slate-200">
-                Diseñados para perfiles que valoran reglas claras, gestión de riesgo y ejecución sistemática. Sin promesas irreales.
-              </p>
-            </div>
-            <RiskNotice message="No es para perfiles conservadores ni para quienes buscan dinero rápido. El riesgo es alto y explícito." />
-          </div>
-
-          <div class="mt-8 grid gap-6 lg:grid-cols-3">
-            <div class="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow">
-              <div>
-                <h3 class="text-xl font-semibold text-white">Señales Agresivas</h3>
-                <p class="text-sm text-slate-300">Para alta tolerancia al riesgo.</p>
-              </div>
-              <div class="text-3xl font-bold text-white">USD —<span class="text-base font-medium text-slate-300"> / mes</span></div>
-              <ul class="space-y-2 text-sm text-slate-100">
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Señales diarias con setups detallados.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Análisis semanal y plan de riesgo.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Acceso a canal privado (Telegram/Discord).</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Parámetros y gestión de posición claros.</li>
-              </ul>
-              <a
-                href="#contacto"
-                class="mt-auto inline-flex items-center justify-center rounded-md bg-[#1E3A8A] px-4 py-2 text-sm font-semibold text-white shadow hover:bg-[#1b3578] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Solicitar acceso
-              </a>
-            </div>
-
-            <div class="flex h-full flex-col gap-4 rounded-2xl border border-[#059669]/40 bg-[#059669]/10 p-6 shadow">
-              <div class="flex items-center justify-between">
-                <div>
-                  <h3 class="text-xl font-semibold text-white">Señales Moderadas</h3>
-                  <p class="text-sm text-slate-200">Menor exposición, calidad sobre cantidad.</p>
-                </div>
-                <span class="rounded-full bg-[#059669]/20 px-3 py-1 text-xs font-semibold text-[#059669]">Recomendado</span>
-              </div>
-              <div class="text-3xl font-bold text-white">USD —<span class="text-base font-medium text-slate-300"> / mes</span></div>
-              <ul class="space-y-2 text-sm text-slate-100">
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Señales filtradas, foco en setups de mayor convicción.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Revisión semanal de riesgo y exposición.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Alertas claras con parámetros y stops.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Soporte básico vía canal privado.</li>
-              </ul>
-              <a
-                href="#contacto"
-                class="mt-auto inline-flex items-center justify-center rounded-md border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Solicitar acceso
-              </a>
-            </div>
-
-            <div class="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow">
-              <div>
-                <h3 class="text-xl font-semibold text-white">Mentoría 1 a 1 y Estrategias Custom</h3>
-                <p class="text-sm text-slate-300">Para traders que quieren sistemas a medida.</p>
-              </div>
-              <div class="text-3xl font-bold text-white">USD —<span class="text-base font-medium text-slate-300"> / mes</span></div>
-              <ul class="space-y-2 text-sm text-slate-100">
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Mentoría mensual y revisión de cuenta.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Desarrollo de estrategias en NinjaTrader.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Indicadores e integraciones personalizadas.</li>
-                <li class="flex gap-2"><span class="text-[#059669]">●</span>Plan de ejecución y monitoreo.</li>
-              </ul>
-              <a
-                href="#contacto"
-                class="mt-auto inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-[#0B1224] shadow hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Agendar una llamada
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="sobre-mi" class="border-b border-white/5 bg-[#0f1a34] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Historia</p>
-          <h2 class="text-3xl font-bold text-white">De Buesaco al trading algorítmico</h2>
-          <div class="mt-6 grid gap-6 md:grid-cols-2">
-            <div class="space-y-4 text-slate-200">
-              <div>
-                <h3 class="text-lg font-semibold text-white">El comienzo</h3>
-                <p>Nacido en Buesaco, Nariño. Empecé en trading desde lo técnico: programación y análisis de datos.</p>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-white">Los golpes</h3>
-                <p>Perdí dinero siguiendo señales sin fundamento y operando con emoción. Aprendí a documentar y medir cada decisión.</p>
-              </div>
-            </div>
-            <div class="space-y-4 text-slate-200">
-              <div>
-                <h3 class="text-lg font-semibold text-white">El punto de inflexión</h3>
-                <p>Combiné programación, análisis técnico y NinjaTrader para crear sistemas algorítmicos con reglas y pruebas rigurosas.</p>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-white">Hoy</h3>
-                <p>16 meses con 94% de rendimiento y 48% de drawdown. Vendor de NinjaTrader, enfoque 100% sistemático y transparente.</p>
-              </div>
-            </div>
-          </div>
-          <p class="mt-6 text-slate-300">
-            Mi objetivo no es vender sueños, sino mostrar cómo funciona el trading profesional cuando se respeta el riesgo y se sigue un sistema.
-          </p>
-        </div>
-      </section>
-
-      <section class="border-b border-white/5 bg-[#0B1224] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Filosofía</p>
-          <h2 class="text-3xl font-bold text-white">Pilares de contenido</h2>
-          <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <h3 class="text-lg font-semibold text-white">Educación algorítmica</h3>
-              <p class="mt-2 text-sm text-slate-200">Metodologías claras para diseñar, probar y ejecutar sistemas.</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <h3 class="text-lg font-semibold text-white">Transparencia de resultados</h3>
-              <p class="mt-2 text-sm text-slate-200">Métricas públicas, supuestos explícitos y seguimiento en vivo.</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <h3 class="text-lg font-semibold text-white">Gestión de riesgo y psicología</h3>
-              <p class="mt-2 text-sm text-slate-200">Tamaño de posición, drawdowns esperados y disciplina mental.</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <h3 class="text-lg font-semibold text-white">Disciplina operativa</h3>
-              <p class="mt-2 text-sm text-slate-200">Ejecución consistente, checklists y revisiones sistemáticas.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="blog" class="border-b border-white/5 bg-[#0f1a34] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Blog</p>
-              <h2 class="text-3xl font-bold text-white">Blog y recursos</h2>
-              <p class="mt-2 text-slate-200">Contenido técnico y práctico. Placeholders listos para conectar tu CMS.</p>
-            </div>
-            <a href="#" class="text-sm font-semibold text-[#059669] hover:text-[#3cc99d]">Ver todo</a>
-          </div>
-          <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <article class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow">
-                <p class="text-xs uppercase tracking-[0.2em] text-[#059669]">{`Enero 2026`}</p>
-                <h3 class="mt-2 text-lg font-semibold text-white">Título de post {i}</h3>
-                <p class="mt-2 text-sm text-slate-200">Resumen breve sobre backtesting, indicadores algorítmicos o gestión de drawdowns.</p>
-                <button class="mt-4 text-sm font-semibold text-[#EA580C] hover:text-[#ff7a30]">Leer más</button>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="faq" class="border-b border-white/5 bg-[#0B1224] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">FAQ</p>
-          <h2 class="text-3xl font-bold text-white">Preguntas frecuentes</h2>
-          <div class="mt-6 space-y-4">
-            <details class="group rounded-xl border border-white/10 bg-white/5 p-4">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-white">
-                <span>¿Garantizas resultados?</span>
-                <span class="text-[#EA580C]">+</span>
-              </summary>
-              <p class="mt-3 text-sm text-slate-200">No. Rendimiento pasado no garantiza resultados futuros. El trading implica riesgos significativos.</p>
-            </details>
-            <details class="group rounded-xl border border-white/10 bg-white/5 p-4">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-white">
-                <span>¿Para quién NO es este servicio?</span>
-                <span class="text-[#EA580C]">+</span>
-              </summary>
-              <p class="mt-3 text-sm text-slate-200">No es para perfiles conservadores ni para quienes buscan dinero rápido. Requiere tolerancia a drawdowns y disciplina.</p>
-            </details>
-            <details class="group rounded-xl border border-white/10 bg-white/5 p-4">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-white">
-                <span>¿Qué capital mínimo recomiendas?</span>
-                <span class="text-[#EA580C]">+</span>
-              </summary>
-              <p class="mt-3 text-sm text-slate-200">Placeholder: completa con tu rango recomendado (ej. 5.000–50.000 USD) y condiciones por cuenta o broker.</p>
-            </details>
-            <details class="group rounded-xl border border-white/10 bg-white/5 p-4">
-              <summary class="flex cursor-pointer list-none items-center justify-between text-white">
-                <span>¿Qué mercados operas?</span>
-                <span class="text-[#EA580C]">+</span>
-              </summary>
-              <p class="mt-3 text-sm text-slate-200">Placeholder: completa con los mercados (futuros, FX, índices) y horarios en los que operas.</p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" class="border-b border-white/5 bg-[#0f1a34] py-14">
-        <div class="mx-auto max-w-6xl px-4 lg:px-6">
-          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#059669]">Contacto</p>
-              <h2 class="text-3xl font-bold text-white">¿Listo para operar con un sistema, no con emociones?</h2>
-              <p class="mt-2 max-w-3xl text-slate-200">Solicita acceso a las señales o agenda una llamada. Responderé con los pasos y disclaimers completos.</p>
-            </div>
-            <div class="flex gap-3">
-              <a
-                href="#contacto"
-                class="rounded-md bg-[#1E3A8A] px-4 py-2 text-sm font-semibold text-white shadow hover:bg-[#1b3578] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Solicitar acceso a las señales
-              </a>
-              <a
-                href="#contacto"
-                class="rounded-md border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-              >
-                Agendar una llamada
-              </a>
-            </div>
-          </div>
-
-          <div class="mt-6 grid gap-6 lg:grid-cols-3">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 lg:col-span-2">
-              <form class="grid gap-4 md:grid-cols-2" action="#" method="post">
-                <label class="flex flex-col gap-1 text-sm text-slate-200">
-                  Nombre
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    class="rounded-md border border-white/20 bg-[#0B1224] px-3 py-2 text-white placeholder:text-slate-400 focus:border-[#059669] focus:outline-none focus:ring-2 focus:ring-[#059669]"
-                  />
-                </label>
-                <label class="flex flex-col gap-1 text-sm text-slate-200">
-                  Email
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    class="rounded-md border border-white/20 bg-[#0B1224] px-3 py-2 text-white placeholder:text-slate-400 focus:border-[#059669] focus:outline-none focus:ring-2 focus:ring-[#059669]"
-                  />
-                </label>
-                <label class="flex flex-col gap-1 text-sm text-slate-200">
-                  Tipo de interés
-                  <select
-                    name="interest"
-                    class="rounded-md border border-white/20 bg-[#0B1224] px-3 py-2 text-white focus:border-[#059669] focus:outline-none focus:ring-2 focus:ring-[#059669]"
-                  >
-                    <option value="senales">Señales</option>
-                    <option value="mentoria">Mentoría</option>
-                    <option value="estrategias">Estrategias custom</option>
-                  </select>
-                </label>
-                <div class="md:col-span-2">
-                  <label class="flex flex-col gap-1 text-sm text-slate-200">
-                    Mensaje
-                    <textarea
-                      name="message"
-                      rows="4"
-                      class="rounded-md border border-white/20 bg-[#0B1224] px-3 py-2 text-white placeholder:text-slate-400 focus:border-[#059669] focus:outline-none focus:ring-2 focus:ring-[#059669]"
-                    ></textarea>
-                  </label>
-                </div>
-                <div class="md:col-span-2 flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 p-3 text-xs text-slate-300">
-                  <input type="checkbox" required class="mt-1" />
-                  <p>Autorizo el uso de mis datos para responder esta solicitud. No comparto la información con terceros.</p>
-                </div>
-                <div class="md:col-span-2 flex gap-3">
-                  <button
-                    type="submit"
-                    class="rounded-md bg-[#1E3A8A] px-4 py-2 text-sm font-semibold text-white shadow hover:bg-[#1b3578] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-                  >
-                    Enviar
-                  </button>
-                  <button
-                    type="button"
-                    class="rounded-md border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 focus:ring-offset-[#0B1224]"
-                  >
-                    Agendar una llamada
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold text-white">Aviso de riesgo</h3>
-              <p class="mt-2 text-sm text-slate-200">El trading implica alto riesgo de pérdida. No inviertas dinero que no puedas permitirte perder. Rendimientos pasados no garantizan resultados futuros.</p>
-              <p class="mt-4 text-sm text-slate-200">Coloca aquí tus disclaimers oficiales como vendor de NinjaTrader.</p>
-              <!-- Espacio para disclaimers legales personalizados -->
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="bg-[#0B1224] py-10">
-      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 text-sm text-slate-300 lg:px-6">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div class="text-white font-semibold">Louis Calderon</div>
-          <div class="flex flex-wrap gap-4 text-slate-200">
-            <a class="hover:text-white" href="#">Términos y Condiciones</a>
-            <a class="hover:text-white" href="#">Política de Privacidad</a>
-            <a class="hover:text-white" href="#">Disclaimer de Riesgo</a>
-          </div>
-          <div class="flex items-center gap-3">
-            <a class="hover:text-white" href="https://instagram.com/louiscalderon.co">Instagram</a>
-            <!-- Agrega otros canales si aplica -->
-          </div>
-        </div>
-        <p class="text-xs text-slate-400">
-          © 2026 Louis Calderon. El trading con apalancamiento implica un alto riesgo. Rendimientos pasados no garantizan resultados futuros. Este sitio es informativo y educativo; no constituye asesoría financiera.
-        </p>
-        <!-- Zona para disclaimers oficiales adicionales y links a pagos/Stripe cuando estén listos -->
-      </div>
-    </footer>
-  </body>
-</html>
+<BaseLayout>
+  <Header />
+  
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <div class="reveal-on-scroll relative z-10">
+      <Hero />
+    </div>
+    
+    <!-- Track Record overlaps Hero -->
+    <div class="reveal-on-scroll delay-100 relative z-20 -mt-20 md:-mt-32">
+      <TrackRecord />
+    </div>
+    
+    <!-- About Section with asymmetric spacing -->
+    <div class="reveal-on-scroll delay-100 relative z-10 pt-12 md:pt-0">
+      <About />
+    </div>
+    
+    <!-- Services overlaps About slightly -->
+    <div class="reveal-on-scroll delay-100 relative z-10 -mt-12 md:-mt-16">
+      <Services />
+    </div>
+    
+    <!-- Philosophy stands apart -->
+    <div class="reveal-on-scroll delay-100 relative z-10">
+      <Philosophy />
+    </div>
+    
+    <div class="reveal-on-scroll delay-100 relative z-10">
+      <FAQ />
+    </div>
+    
+    <!-- Contact overlaps slightly -->
+    <div class="reveal-on-scroll delay-100 relative z-10 -mt-12 pb-12">
+      <Contact />
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

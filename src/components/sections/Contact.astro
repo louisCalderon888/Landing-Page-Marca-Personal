@@ -1,0 +1,126 @@
+---
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+import Input from '../ui/Input.astro';
+---
+
+<section id="contact" class="section bg-dark-900/30 relative overflow-hidden">
+  <!-- Background Glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl bg-brand-blue/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+      <!-- Left Column: Info -->
+      <div>
+        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
+          Hablemos de <br/>
+          <span class="text-brand-blue">Sistemas</span>
+        </h2>
+        
+        <p class="text-dark-300 text-lg mb-12 leading-relaxed">
+          Si has llegado hasta aquí y entiendes los riesgos, estás buscando disciplina y 
+          tienes una visión a largo plazo, me interesa conocerte.
+        </p>
+        
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-dark-900 border border-dark-700 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">Email</h4>
+              <a href="mailto:contact@louiscalderon.com" class="text-dark-400 hover:text-brand-blue transition-colors">
+                contact@louiscalderon.com
+              </a>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-dark-900 border border-dark-700 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">Redes</h4>
+              <div class="flex gap-4">
+                <a href="https://instagram.com/louiscalderon.co" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-brand-green transition-colors">Instagram</a>
+                <a href="https://linkedin.com/in/louiscalderon" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-brand-green transition-colors">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Status Indicator -->
+        <div class="mt-12 p-4 bg-dark-950 rounded-lg border border-dark-800 inline-block">
+          <div class="flex items-center gap-3">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-green"></span>
+            </span>
+            <span class="text-sm font-mono text-dark-300">
+              Aceptando nuevos alumnos (Cupos limitados)
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Form -->
+      <div>
+        <Card variant="default" class="p-8">
+          <form 
+            action="https://formspree.io/f/PLACEHOLDER" 
+            method="POST" 
+            class="space-y-6"
+          >
+            <div>
+              <label for="name" class="block text-sm font-medium text-dark-300 mb-2">Nombre</label>
+              <Input name="name" placeholder="Tu nombre" required />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-dark-300 mb-2">Email</label>
+              <Input type="email" name="email" placeholder="tu@email.com" required />
+            </div>
+            
+            <div>
+              <label for="interest" class="block text-sm font-medium text-dark-300 mb-2">Interés Principal</label>
+              <div class="relative">
+                <select 
+                  name="interest" 
+                  id="interest"
+                  class="w-full bg-dark-800 border border-dark-600 rounded-lg px-4 py-3 text-white appearance-none focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 focus:outline-none transition-all duration-200"
+                >
+                  <option value="mentoria">Mentoría 1-on-1</option>
+                  <option value="senales">Señales Algorítmicas</option>
+                  <option value="desarrollo">Desarrollo Custom</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-dark-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-dark-300 mb-2">Mensaje</label>
+              <Input type="textarea" name="message" placeholder="Cuéntame sobre tu experiencia en trading..." rows={4} required />
+            </div>
+            
+            <Button type="submit" variant="primary" class="w-full">
+              Enviar Mensaje
+            </Button>
+            
+            <p class="text-xs text-dark-500 text-center mt-4">
+              * Tus datos están seguros. No spam, solo trading serio.
+            </p>
+          </form>
+        </Card>
+      </div>
+    </div>
+  </div>
+</section>

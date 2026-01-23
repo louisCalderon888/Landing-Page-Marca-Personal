@@ -1,0 +1,112 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { 
+  title = 'LOUIS CALDERON - Trading Sistemático | Señales Algorítmicas Verificadas',
+  description = 'Trading algorítmico con transparencia total. 94% ROI en 16 meses. Track record verificado. Para traders serios únicamente.',
+  ogImage = '/og-image.jpg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Louis Calderon",
+        "alternateName": "LOUIS CALDERON",
+        "description": "Especialista en trading algorítmico y ejecución discrecional",
+        "url": canonicalURL,
+        "jobTitle": "Trading Sistemático",
+        "knowsAbout": ["Trading Algorítmico", "NinjaTrader", "Trading Sistemático", "Análisis Cuantitativo"],
+        "sameAs": [
+          "https://instagram.com/louiscalderon.co",
+          "https://linkedin.com/in/louiscalderon"
+        ]
+      })}
+    </script>
+
+    <!-- Lenis & Animation Scripts -->
+    <script>
+      import Lenis from 'lenis'
+
+      // Initialize Lenis
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+      })
+
+      function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+      }
+
+      requestAnimationFrame(raf)
+
+      // Intersection Observer for Reveal Animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Only animate once
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with reveal-on-scroll class
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        revealElements.forEach(el => observer.observe(el));
+      });
+    </script>
+  </head>
+  <body class="bg-aurora text-white font-sans antialiased selection:bg-brand-blue selection:text-white overflow-x-hidden">
+    <!-- Noise Overlay -->
+    <div class="noise-bg"></div>
+    
+    <slot />
+  </body>
+</html>

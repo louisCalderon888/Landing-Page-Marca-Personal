@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "lint": "astro check"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lenis": "^1.3.17"
+  },
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.15.0",

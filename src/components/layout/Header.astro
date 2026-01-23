@@ -1,0 +1,127 @@
+---
+const navItems = [
+  { name: 'Inicio', href: '#hero' },
+  { name: 'Track Record', href: '#track-record' },
+  { name: 'Sobre Mí', href: '#about' },
+  { name: 'Servicios', href: '#services' },
+  { name: 'FAQ', href: '#faq' },
+  { name: 'Contacto', href: '#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-dark-800">
+  <nav class="container-custom py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="text-2xl font-display font-bold text-white group-hover:text-brand-blue transition-colors">
+          LOUIS CALDERON
+        </div>
+        <span class="hidden md:block text-sm text-dark-400 font-sans">
+          Trading Sistemático
+        </span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <ul class="hidden lg:flex items-center gap-8">
+        {navItems.map((item) => (
+          <li>
+            <a 
+              href={item.href} 
+              class="text-dark-300 hover:text-brand-green transition-colors font-medium"
+            >
+              {item.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="lg:hidden text-white p-3 hover:text-brand-blue transition-colors relative z-50"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <div class="w-6 h-6 flex flex-col justify-center gap-1.5 overflow-hidden">
+          <span class="w-full h-0.5 bg-current transform transition-all duration-300 origin-center" id="hamburger-top"></span>
+          <span class="w-full h-0.5 bg-current transform transition-all duration-300 origin-center" id="hamburger-middle"></span>
+          <span class="w-full h-0.5 bg-current transform transition-all duration-300 origin-center" id="hamburger-bottom"></span>
+        </div>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div 
+      id="mobile-menu" 
+      class="fixed inset-0 bg-dark-950/95 backdrop-blur-2xl z-40 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center justify-center"
+      aria-hidden="true"
+    >
+      <ul class="flex flex-col gap-8 items-center text-center">
+        {navItems.map((item, index) => (
+          <li class="transform translate-y-4 opacity-0 transition-all duration-500 ease-out" style={`transition-delay: ${index * 100}ms`}>
+            <a 
+              href={item.href} 
+              class="text-3xl md:text-4xl font-display font-bold text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-brand-blue hover:to-brand-green transition-all"
+            >
+              {item.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuItems = mobileMenu?.querySelectorAll('li');
+  const topBar = document.getElementById('hamburger-top');
+  const middleBar = document.getElementById('hamburger-middle');
+  const bottomBar = document.getElementById('hamburger-bottom');
+  
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    mobileMenuButton?.setAttribute('aria-expanded', isMenuOpen.toString());
+    
+    if (isMenuOpen) {
+      // Open Menu
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+      menuItems?.forEach(item => {
+        item.classList.remove('translate-y-4', 'opacity-0');
+      });
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      
+      // Animate Icon
+      topBar?.classList.add('rotate-45', 'translate-y-2');
+      middleBar?.classList.add('opacity-0', 'translate-x-4');
+      bottomBar?.classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      // Close Menu
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      menuItems?.forEach(item => {
+        item.classList.add('translate-y-4', 'opacity-0');
+      });
+      document.body.style.overflow = ''; // Restore scrolling
+      
+      // Reset Icon
+      topBar?.classList.remove('rotate-45', 'translate-y-2');
+      middleBar?.classList.remove('opacity-0', 'translate-x-4');
+      bottomBar?.classList.remove('-rotate-45', '-translate-y-2');
+    }
+  }
+  
+  mobileMenuButton?.addEventListener('click', toggleMenu);
+  
+  // Close mobile menu when clicking a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
+  });
+</script>

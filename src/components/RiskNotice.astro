@@ -1,7 +1,19 @@
 ---
-const { message } = Astro.props;
+const { message, variant = "warning" } = Astro.props;
+
+const variants = {
+  warning: "border-amber-500/50 bg-amber-50/10 text-amber-100",
+  danger: "border-red-500/50 bg-red-50/10 text-red-100",
+  info: "border-blue-500/50 bg-blue-50/10 text-blue-100"
+};
+
+const icons = {
+  warning: "⚠",
+  danger: "⚡",
+  info: "ℹ"
+};
 ---
-<div class="flex items-start gap-3 rounded-lg border border-amber-500/50 bg-amber-50/80 p-3 text-sm text-amber-900 shadow-sm">
-  <span aria-hidden="true" class="mt-0.5 text-lg">⚠</span>
+<div class={`flex items-start gap-3 rounded-lg border ${variants[variant]} p-4 text-sm shadow-sm backdrop-blur-sm`}>
+  <span aria-hidden="true" class="mt-0.5 text-lg flex-shrink-0">{icons[variant]}</span>
   <p class="leading-relaxed">{message}</p>
 </div>
