@@ -10,6 +10,7 @@
     "lint": "astro check"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "lenis": "^1.3.17"
   },
   "devDependencies": {
