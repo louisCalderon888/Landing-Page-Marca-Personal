@@ -1,0 +1,33 @@
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+
+# Builds
+.dist
+/dist
+/.vercel
+.vercel
+
+# Env
+.env
+.env.*
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode
+
+# Tools cache
+.agent/
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.kiro/
+.opencode/
+.windsurf/

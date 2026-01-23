@@ -1,0 +1,20 @@
+{
+  "name": "louis-calderon-landing",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "astro check"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.15.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.10"
+  }
+}
