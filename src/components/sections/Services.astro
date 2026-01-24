@@ -4,50 +4,69 @@ import Button from '../ui/Button.astro';
 
 const services = [
   {
-    name: 'Señales Algorítmicas',
-    description: 'Recibe señales de trading generadas por algoritmos validados. Parámetros completos: entrada, stop, objetivo, tamaño de posición.',
-    price: '—',
+    name: 'Señales VIP',
+    description: 'Recibe mis señales de operativa discrecional en tiempo real. Cada entrada está verificada sistemáticamente con datos históricos. Transparencia total: ves mis trades reales, no teoría.',
+    price: '33',
     period: 'mes',
     features: [
-      'Señales diarias vía Telegram',
-      'Parámetros de entrada completos',
-      'Gestión de riesgo incluida',
+      'Señales diarias en tiempo real',
+      'Operativa discrecional verificada',
+      'Parámetros completos: entrada, stop, objetivo',
       'Acceso al track record en vivo',
-      'Soporte por chat',
+      'Gestión de riesgo incluida',
+      'Grupo privado de Telegram',
     ],
-    cta: 'Próximamente',
+    cta: 'Suscribirse',
     featured: false,
   },
   {
     name: 'Mentoría 1-on-1',
-    description: 'Aprende a desarrollar tus propios sistemas algorítmicos en NinjaTrader. Sesiones personalizadas adaptadas a tu nivel.',
-    price: '—',
+    description: 'Un espacio humano para traders. Ya sea que necesites desarrollar tu estrategia, hablar de psicología del trading, orientación para empezar, o simplemente alguien que entienda por lo que estás pasando. Si estás abrumado o no sabes cuál es el camino, puedo ayudarte.',
+    price: '100',
     period: 'sesión',
     features: [
-      'Sesiones individuales 1 hora',
-      'Revisión de código C#',
-      'Backtesting y validación',
-      'Desarrollo de estrategias',
-      'Material educativo exclusivo',
-      'Seguimiento continuo',
+      'Sesiones individuales personalizadas',
+      'Desarrollo de estrategia propia',
+      'Psicología y mentalidad del trader',
+      'Orientación para principiantes',
+      'Evaluación de tu trading diario',
+      'Trading algorítmico (si te interesa)',
+      'Contacto humano real, sin humo',
     ],
-    cta: 'Consultar',
+    cta: 'Agendar Sesión',
     featured: true,
   },
   {
     name: 'Desarrollo Personalizado',
-    description: 'Desarrollo de indicadores y estrategias custom para NinjaTrader según tus especificaciones y reglas de trading.',
-    price: '—',
+    description: 'Sistematizo tu estrategia de trading. Creo indicadores y herramientas personalizadas en cualquier plataforma: NinjaTrader, TradingView, MetaTrader, y más. Tu idea, mi código.',
+    price: '50 - 3,000',
     period: 'proyecto',
     features: [
-      'Indicadores custom en C#',
-      'Estrategias automatizadas',
-      'Backtesting completo',
-      'Documentación técnica',
+      'Indicadores personalizados',
+      'Cualquier plataforma de trading',
+      'Sistematización de tu estrategia',
+      'Backtesting y validación',
+      'Documentación técnica completa',
       'Soporte post-desarrollo',
     ],
-    cta: 'Cotizar',
+    cta: 'Cotizar Proyecto',
     featured: false,
+  },
+  {
+    name: 'Algoritmos de Trading',
+    description: 'Mis propios bots y sistemas algorítmicos, desarrollados y validados con años de operativa real. Automatiza tu trading con sistemas probados.',
+    price: '500 - 1,500',
+    period: 'licencia',
+    features: [
+      'Bots probados en mercado real',
+      'Backtesting extensivo',
+      'Documentación de uso',
+      'Soporte técnico incluido',
+      'Actualizaciones periódicas',
+    ],
+    cta: 'Próximamente',
+    featured: false,
+    comingSoon: true,
   },
 ];
 ---
@@ -60,22 +79,30 @@ const services = [
         Servicios
       </h2>
       <p class="text-dark-300 text-lg">
-        No vendo sueños, vendo <span class="text-brand-green font-semibold">sistemas</span>. 
-        Elige el servicio que mejor se adapte a tu nivel y objetivos.
+        No vendo sueños, vendo <span class="text-brand-green font-semibold">soluciones reales</span>. 
+        Desde señales verificadas hasta mentoría personalizada y desarrollo a medida.
       </p>
     </div>
     
     <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
       {services.map((service) => (
         <Card 
           variant={service.featured ? 'premium' : 'default'}
-          class={`flex flex-col ${service.featured ? 'lg:scale-105 lg:shadow-2xl' : ''}`}
+          class={`flex flex-col ${service.featured ? 'lg:scale-105 lg:shadow-2xl' : ''} ${service.comingSoon ? 'opacity-75' : ''}`}
         >
           {service.featured && (
             <div class="mb-4">
               <span class="inline-block px-3 py-1 rounded-full bg-brand-green/20 text-brand-green text-xs font-semibold uppercase tracking-wide">
                 Más Popular
+              </span>
+            </div>
+          )}
+          
+          {service.comingSoon && (
+            <div class="mb-4">
+              <span class="inline-block px-3 py-1 rounded-full bg-brand-amber/20 text-brand-amber text-xs font-semibold uppercase tracking-wide">
+                Próximamente
               </span>
             </div>
           )}
@@ -94,9 +121,6 @@ const services = [
               <span class="text-4xl font-mono font-bold text-white">USD {service.price}</span>
               <span class="text-dark-400 text-sm">/ {service.period}</span>
             </div>
-            <p class="text-xs text-dark-500 mt-2">
-              * Actualizar con precios reales
-            </p>
           </div>
           
           <!-- Features -->
