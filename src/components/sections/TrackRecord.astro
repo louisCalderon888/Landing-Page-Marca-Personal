@@ -8,7 +8,7 @@ import Card from '../ui/Card.astro';
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-radial from-brand-green/10 via-transparent to-transparent blur-3xl pointer-events-none"></div>
   
   <div class="container-custom relative z-10">
-    <!-- Section Header -->
+    <!-- Section Header with Social Proof -->
     <div class="text-center max-w-3xl mx-auto mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green text-sm font-medium mb-6 badge-glow" style="--glow-color: rgba(16, 185, 129, 0.3);">
         <span class="pulse-dot"></span>
@@ -17,10 +17,18 @@ import Card from '../ui/Card.astro';
       <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
         Track Record <span class="gradient-text">Verificado</span>
       </h2>
-      <p class="text-dark-300 text-lg">
+      <p class="text-dark-300 text-lg mb-4">
         Transparencia total. Todos los resultados son verificables en tiempo real a través de Myfxbook. 
-        Sin cherry-picking. Sin edición. Solo datos reales.
+        Sin cherry-picking. Sin edición. <span class="text-brand-amber font-semibold">Incluyendo los drawdowns.</span>
       </p>
+      <!-- Social Proof Counter - Bandwagon Effect -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-dark-800/50 border border-dark-700 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-blue" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+        </svg>
+        <span class="text-dark-400">Traders que confían en estos datos:</span>
+        <span class="text-brand-green font-mono font-bold">50+</span>
+      </div>
     </div>
     
     <!-- Main Metrics Grid -->

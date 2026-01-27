@@ -1,5 +1,6 @@
 ---
 import Analytics from '@vercel/analytics/astro'
+import ExitPopup from '../components/ui/ExitPopup.astro'
 
 interface Props {
   title?: string;
@@ -112,5 +113,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <div class="noise-bg"></div>
     
     <slot />
+    
+    <!-- Exit Intent Popup - Marketing Psychology -->
+    <ExitPopup />
   </body>
 </html>
+

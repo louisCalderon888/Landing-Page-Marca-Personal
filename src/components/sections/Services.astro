@@ -2,12 +2,35 @@
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
 
+// PSYCHOLOGY: Services ordered for Anchoring Effect
+// Mentoría ($100) shown first anchors high, making Señales ($33) feel cheap
 const services = [
+  {
+    name: 'Mentoría 1-on-1',
+    description: 'Un espacio humano para traders. Ya sea que necesites desarrollar tu estrategia, hablar de psicología del trading, orientación para empezar, o simplemente alguien que entienda por lo que estás pasando. Si estás abrumado o no sabes cuál es el camino, puedo ayudarte.',
+    price: '100',
+    period: 'sesión',
+    priceSubtext: 'Inversión en TU éxito', // Unity Principle
+    features: [
+      'Sesiones individuales personalizadas',
+      'Desarrollo de estrategia propia',
+      'Psicología y mentalidad del trader',
+      'Orientación para principiantes',
+      'Evaluación de tu trading diario',
+      'Trading algorítmico (si te interesa)',
+      'Contacto humano real, sin humo',
+    ],
+    cta: 'Agendar Sesión',
+    featured: true,
+    glow: 'green' as const,
+    badge: 'Mejor Valor', // Decoy Effect - makes this the obvious choice
+  },
   {
     name: 'Señales VIP',
     description: 'Recibe mis señales de operativa discrecional en tiempo real. Cada entrada está verificada sistemáticamente con datos históricos. Transparencia total: ves mis trades reales, no teoría.',
     price: '33',
     period: 'mes',
+    priceSubtext: 'Solo $1/día', // Mental Accounting
     features: [
       'Señales diarias en tiempo real',
       'Operativa discrecional verificada',
@@ -21,28 +44,11 @@ const services = [
     glow: 'blue' as const,
   },
   {
-    name: 'Mentoría 1-on-1',
-    description: 'Un espacio humano para traders. Ya sea que necesites desarrollar tu estrategia, hablar de psicología del trading, orientación para empezar, o simplemente alguien que entienda por lo que estás pasando. Si estás abrumado o no sabes cuál es el camino, puedo ayudarte.',
-    price: '100',
-    period: 'sesión',
-    features: [
-      'Sesiones individuales personalizadas',
-      'Desarrollo de estrategia propia',
-      'Psicología y mentalidad del trader',
-      'Orientación para principiantes',
-      'Evaluación de tu trading diario',
-      'Trading algorítmico (si te interesa)',
-      'Contacto humano real, sin humo',
-    ],
-    cta: 'Agendar Sesión',
-    featured: true,
-    glow: 'green' as const,
-  },
-  {
     name: 'Desarrollo Personalizado',
     description: 'Sistematizo tu estrategia de trading. Creo indicadores y herramientas personalizadas en cualquier plataforma: NinjaTrader, TradingView, MetaTrader, y más. Tu idea, mi código.',
     price: '50 - 3,000',
     period: 'proyecto',
+    priceSubtext: 'Cotización gratuita',
     features: [
       'Indicadores personalizados',
       'Cualquier plataforma de trading',
@@ -60,6 +66,7 @@ const services = [
     description: 'Mis propios bots y sistemas algorítmicos, desarrollados y validados con años de operativa real. Automatiza tu trading con sistemas probados.',
     price: '500 - 1,500',
     period: 'licencia',
+    priceSubtext: 'Próximamente disponible',
     features: [
       'Bots probados en mercado real',
       'Backtesting extensivo',
@@ -101,12 +108,12 @@ const services = [
             glow={service.glow}
             class={`flex flex-col h-full ${service.featured ? 'ring-1 ring-brand-green/30' : ''}`}
           >
-            <!-- Badge -->
+            <!-- Badge - Dynamic based on service.badge or featured -->
             {service.featured && (
               <div class="mb-4">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green/20 text-brand-green text-xs font-semibold uppercase tracking-wide">
                   <span class="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse"></span>
-                  Más Popular
+                  {service.badge || 'Más Popular'}
                 </span>
               </div>
             )}
@@ -129,7 +136,7 @@ const services = [
               {service.description}
             </p>
             
-            <!-- Price -->
+            <!-- Price with Mental Accounting -->
             <div class="mb-6">
               <div class="flex items-baseline gap-2">
                 <span class="text-4xl font-mono font-bold text-white tracking-tight">
@@ -137,6 +144,11 @@ const services = [
                 </span>
                 <span class="text-dark-400 text-sm">/ {service.period}</span>
               </div>
+              {service.priceSubtext && (
+                <p class="text-xs text-brand-green mt-1 font-medium">
+                  {service.priceSubtext}
+                </p>
+              )}
             </div>
             
             <!-- Features -->
