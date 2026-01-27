@@ -4,7 +4,10 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
   href?: string;
+  target?: '_blank' | '_self';
+  rel?: string;
   glow?: boolean;
+  disabled?: boolean;
   class?: string;
 }
 
@@ -13,7 +16,10 @@ const {
   size = 'md', 
   type = 'button',
   href,
+  target,
+  rel,
   glow = false,
+  disabled = false,
   class: className = ''
 } = Astro.props;
 
@@ -31,10 +37,11 @@ const variantClasses = {
 };
 
 const glowClass = glow ? 'btn-glow' : '';
+const disabledClass = disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : '';
 
 const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-300 ease-out hover:-translate-y-0.5 focus-ring disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
 
-const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${glowClass} ${className}`;
+const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${glowClass} ${disabledClass} ${className}`;
 
 const Tag = href ? 'a' : 'button';
 ---
@@ -42,7 +49,11 @@ const Tag = href ? 'a' : 'button';
 <Tag 
   href={href}
   type={!href ? type : undefined}
+  target={target}
+  rel={rel}
   class={combinedClasses}
+  aria-disabled={disabled}
 >
   <slot />
 </Tag>
+

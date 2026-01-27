@@ -206,7 +206,7 @@ Persona:
 #### 1. Señales VIP (Suscripción)
 | Tier | Precio | Incluye |
 |------|--------|--------|
-| **VIP** | $33/mes | Señales diarias, Telegram, Parámetros completos, Track record en vivo, Gestión de riesgo |
+| **VIP** | $33/mes | Señales diarias, Whop (señales + lives), Parámetros completos, Track record en vivo, Gestión de riesgo |
 
 #### 2. Mentoría 1-on-1 (Por sesión)
 | Opción | Precio | Valor |

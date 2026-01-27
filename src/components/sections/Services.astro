@@ -4,6 +4,15 @@ import Button from '../ui/Button.astro';
 
 // PSYCHOLOGY: Services ordered for Anchoring Effect
 // Mentoría ($100) shown first anchors high, making Señales ($33) feel cheap
+
+// URLs de checkout de Whop (REALES)
+const WHOP_URLS = {
+  mentoria: 'https://whop.com/checkout/plan_FMNzv5c6rx4bf', // Mentoría 1-on-1
+  senales: 'https://whop.com/checkout/plan_OsAtpQPKt9IGV', // Señales + Operativa en Vivo
+  desarrollo: 'https://whop.com/checkout/plan_WvcN3RbthoVzN', // Cotización Desarrollo
+  algoritmos: '#contact', // Próximamente
+};
+
 const services = [
   {
     name: 'Mentoría 1-on-1',
@@ -21,6 +30,7 @@ const services = [
       'Contacto humano real, sin humo',
     ],
     cta: 'Agendar Sesión',
+    whopUrl: WHOP_URLS.mentoria,
     featured: true,
     glow: 'green' as const,
     badge: 'Mejor Valor', // Decoy Effect - makes this the obvious choice
@@ -37,9 +47,10 @@ const services = [
       'Parámetros completos: entrada, stop, objetivo',
       'Acceso al track record en vivo',
       'Gestión de riesgo incluida',
-      'Grupo privado de Telegram',
+      'Lives de operativa en tiempo real',
     ],
-    cta: 'Suscribirse',
+    cta: 'Suscribirse Ahora',
+    whopUrl: WHOP_URLS.senales,
     featured: false,
     glow: 'blue' as const,
   },
@@ -58,6 +69,7 @@ const services = [
       'Soporte post-desarrollo',
     ],
     cta: 'Cotizar Proyecto',
+    whopUrl: WHOP_URLS.desarrollo,
     featured: false,
     glow: 'blue' as const,
   },
@@ -75,6 +87,7 @@ const services = [
       'Actualizaciones periódicas',
     ],
     cta: 'Próximamente',
+    whopUrl: WHOP_URLS.algoritmos,
     featured: false,
     comingSoon: true,
     glow: 'amber' as const,
@@ -168,7 +181,10 @@ const services = [
               variant={service.featured ? 'cta' : 'primary'}
               glow={true}
               class="w-full"
-              href="#contact"
+              href={service.whopUrl}
+              target={service.whopUrl.startsWith('http') ? '_blank' : undefined}
+              rel={service.whopUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+              disabled={service.comingSoon}
             >
               {service.cta}
             </Button>
