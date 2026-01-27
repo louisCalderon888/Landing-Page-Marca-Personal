@@ -9,28 +9,35 @@ const navItems = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-dark-800">
+<header class="fixed top-0 left-0 right-0 z-50 bg-dark-950/90 backdrop-blur-xl border-b border-dark-800/50" id="main-header">
   <nav class="container-custom py-4">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Logo with premium hover -->
       <a href="#hero" class="flex items-center gap-3 group">
-        <div class="text-2xl font-display font-bold text-white group-hover:text-brand-blue transition-colors">
-          LOUIS CALDERON
+        <div class="relative">
+          <div class="text-2xl font-display font-bold text-white group-hover:text-brand-blue transition-all duration-300">
+            LOUIS CALDERON
+          </div>
+          <!-- Subtle glow on hover -->
+          <div class="absolute inset-0 blur-xl bg-brand-blue/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         </div>
-        <span class="hidden md:block text-sm text-dark-400 font-sans">
+        <span class="hidden md:flex items-center gap-2 text-sm text-dark-400 font-sans">
+          <span class="w-1 h-1 rounded-full bg-brand-green animate-pulse"></span>
           Trading Sistemático
         </span>
       </a>
       
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation with underline effect -->
       <ul class="hidden lg:flex items-center gap-8">
         {navItems.map((item) => (
           <li>
             <a 
               href={item.href} 
-              class="text-dark-300 hover:text-brand-green transition-colors font-medium"
+              class="relative text-dark-300 hover:text-white transition-colors font-medium group py-2"
             >
               {item.name}
+              <!-- Animated underline -->
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue to-brand-green group-hover:w-full transition-all duration-300"></span>
             </a>
           </li>
         ))}
@@ -54,7 +61,7 @@ const navItems = [
     <!-- Mobile Menu Overlay -->
     <div 
       id="mobile-menu" 
-      class="fixed inset-0 bg-dark-950/95 backdrop-blur-2xl z-40 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center justify-center"
+      class="fixed inset-0 bg-dark-950/98 backdrop-blur-2xl z-40 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center justify-center"
       aria-hidden="true"
     >
       <ul class="flex flex-col gap-8 items-center text-center">
@@ -81,6 +88,7 @@ const navItems = [
   const topBar = document.getElementById('hamburger-top');
   const middleBar = document.getElementById('hamburger-middle');
   const bottomBar = document.getElementById('hamburger-bottom');
+  const header = document.getElementById('main-header');
   
   let isMenuOpen = false;
 
@@ -123,5 +131,19 @@ const navItems = [
     link.addEventListener('click', () => {
       if (isMenuOpen) toggleMenu();
     });
+  });
+
+  // Header scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+      header?.classList.add('shadow-lg', 'shadow-dark-950/50');
+    } else {
+      header?.classList.remove('shadow-lg', 'shadow-dark-950/50');
+    }
+    
+    lastScroll = currentScroll;
   });
 </script>

@@ -3,23 +3,29 @@ import Button from '../ui/Button.astro';
 ---
 
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Background -->
-  <div class="absolute inset-0 grid-pattern opacity-50"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/95 to-dark-950"></div>
+  <!-- Enhanced Background with Tech Grid -->
+  <div class="absolute inset-0 tech-grid-pattern opacity-60 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/95 to-dark-950 pointer-events-none"></div>
+  
+  <!-- Subtle Aurora Effect -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-1/2 -left-1/4 w-full h-full bg-gradient-radial from-brand-blue/10 via-transparent to-transparent blur-3xl animate-pulse-slow"></div>
+    <div class="absolute -bottom-1/2 -right-1/4 w-full h-full bg-gradient-radial from-brand-green/5 via-transparent to-transparent blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+  </div>
   
   <!-- Content -->
-  <div class="relative container-custom py-24 md:py-32">
+  <div class="relative container-custom py-24 md:py-32 z-10">
     <div class="max-w-5xl mx-auto text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-blue text-sm font-medium mb-8 animate-fade-in">
-        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+      <!-- Badge with Premium Glow -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-blue text-sm font-medium mb-8 animate-fade-in badge-glow">
+        <span class="pulse-dot"></span>
         Track Record Verificado en Vivo
       </div>
       
-      <!-- Headline -->
+      <!-- Headline with Enhanced Gradient -->
       <h1 class="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl mb-6 text-shadow animate-fade-in">
         Trading Sistemático con
-        <span class="block mt-2 bg-gradient-to-r from-brand-blue via-brand-green to-brand-amber bg-clip-text text-transparent">
+        <span class="block mt-2 bg-gradient-to-r from-brand-blue via-brand-green to-brand-amber bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
           Validación Científica
         </span>
       </h1>
@@ -30,50 +36,78 @@ import Button from '../ui/Button.astro';
         y resultados verificables. <span class="text-white font-semibold">Para traders serios únicamente.</span>
       </p>
       
-      <!-- Stats Row -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 animate-fade-in">
-        <div class="bg-dark-900/50 backdrop-blur-sm border border-dark-700 rounded-xl p-6 hover:border-brand-green/50 transition-all">
-          <div class="metric-number text-brand-green mb-2">94%</div>
-          <div class="text-dark-400 text-sm uppercase tracking-wider">ROI en 16 meses</div>
+      <!-- Stats Row - Premium Glass Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-fade-in">
+        <!-- ROI Card -->
+        <div class="premium-card p-6 group">
+          <div class="relative z-10">
+            <div class="metric-number-glow text-brand-green mb-2 group-hover:scale-105 transition-transform duration-300">94%</div>
+            <div class="text-dark-400 text-sm uppercase tracking-wider font-medium">ROI en 16 meses</div>
+          </div>
         </div>
         
-        <div class="bg-dark-900/50 backdrop-blur-sm border border-dark-700 rounded-xl p-6 hover:border-brand-amber/50 transition-all">
-          <div class="metric-number text-brand-amber mb-2">-48%</div>
-          <div class="text-dark-400 text-sm uppercase tracking-wider">Drawdown Máximo</div>
-          <div class="text-xs text-dark-500 mt-2">Transparencia total</div>
+        <!-- Drawdown Card -->
+        <div class="premium-card p-6 group">
+          <div class="relative z-10">
+            <div class="metric-number text-brand-amber mb-2 group-hover:scale-105 transition-transform duration-300">-48%</div>
+            <div class="text-dark-400 text-sm uppercase tracking-wider font-medium">Drawdown Máximo</div>
+            <div class="text-xs text-dark-500 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Transparencia total</div>
+          </div>
         </div>
         
-        <div class="bg-dark-900/50 backdrop-blur-sm border border-dark-700 rounded-xl p-6 hover:border-brand-blue/50 transition-all">
-          <div class="metric-number text-brand-blue mb-2">100%</div>
-          <div class="text-dark-400 text-sm uppercase tracking-wider">Algorítmico</div>
-          <div class="text-xs text-dark-500 mt-2">Cero emociones</div>
+        <!-- Algorithmic Card -->
+        <div class="premium-card p-6 group">
+          <div class="relative z-10">
+            <div class="metric-number-glow text-brand-blue mb-2 group-hover:scale-105 transition-transform duration-300">100%</div>
+            <div class="text-dark-400 text-sm uppercase tracking-wider font-medium">Algorítmico</div>
+            <div class="text-xs text-dark-500 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Cero emociones</div>
+          </div>
         </div>
       </div>
       
-      <!-- CTAs -->
+      <!-- CTAs with Premium Glow Effects -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-        <Button variant="cta" size="lg" href="#track-record">
+        <Button variant="cta" size="lg" href="#track-record" class="btn-glow btn-glow-cta">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
           </svg>
           Ver Track Record
         </Button>
-        <Button variant="secondary" size="lg" href="#services">
+        <Button variant="secondary" size="lg" href="#services" class="btn-glow">
           Conocer Servicios
         </Button>
       </div>
       
-      <!-- Signature Phrase -->
-      <p class="mt-12 text-dark-400 text-sm font-mono animate-fade-in">
-        No opino, valido con datos.
+      <!-- Signature Phrase with Typing Effect -->
+      <p class="mt-12 text-dark-400 text-sm font-mono animate-fade-in typing-cursor">
+        No opino, valido con datos
       </p>
     </div>
   </div>
   
-  <!-- Scroll Indicator -->
+  <!-- Scroll Indicator with Glow -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+    <div class="p-2 rounded-full bg-dark-900/50 backdrop-blur-sm border border-dark-700/50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
   </div>
 </section>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+</style>

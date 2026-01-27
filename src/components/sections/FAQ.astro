@@ -27,12 +27,15 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="section bg-dark-950">
-  <div class="container-custom">
+<section id="faq" class="section bg-dark-950 relative overflow-hidden">
+  <!-- Background accent -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-brand-blue/5 via-transparent to-transparent blur-3xl pointer-events-none"></div>
+  
+  <div class="container-custom relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
       <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
-        Preguntas <span class="text-brand-blue">Frecuentes</span>
+        Preguntas <span class="gradient-text">Frecuentes</span>
       </h2>
       <p class="text-dark-300 text-lg">
         Respuestas directas, sin letra chica.
@@ -41,21 +44,43 @@ const faqs = [
     
     <!-- FAQ Grid -->
     <div class="max-w-3xl mx-auto space-y-4">
-      {faqs.map((faq) => (
-        <details class="group bg-dark-900 border border-dark-700 rounded-xl overflow-hidden transition-all duration-300 open:border-brand-blue open:shadow-glow-blue/20">
-          <summary class="flex items-center justify-between p-6 cursor-pointer list-none text-white font-medium hover:text-brand-blue transition-colors">
-            <span>{faq.question}</span>
-            <span class="transform group-open:rotate-180 transition-transform duration-300 text-brand-blue">
+      {faqs.map((faq, index) => (
+        <details class="group premium-card overflow-hidden transition-all duration-400 open:ring-1 open:ring-brand-blue/30">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none text-white font-medium hover:text-brand-blue transition-colors duration-300 relative z-10">
+            <span class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue text-sm font-mono">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              {faq.question}
+            </span>
+            <span class="flex-shrink-0 ml-4 transform group-open:rotate-180 transition-transform duration-300 text-brand-blue">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </span>
           </summary>
-          <div class="px-6 pb-6 text-dark-300 leading-relaxed border-t border-dark-800/50 pt-4">
+          <div class="px-6 pb-6 text-dark-300 leading-relaxed border-t border-dark-800/30 pt-4 ml-12 relative z-10">
             {faq.answer}
           </div>
         </details>
       ))}
+    </div>
+    
+    <!-- Bottom CTA -->
+    <div class="text-center mt-12">
+      <p class="text-dark-400 mb-6">
+        ¿Tienes otra pregunta?
+      </p>
+      <a 
+        href="#contact" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-blue/10 text-brand-blue border border-brand-blue/30 hover:bg-brand-blue/20 hover:border-brand-blue/50 transition-all duration-300 font-medium btn-glow"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+        </svg>
+        Contactar
+      </a>
     </div>
   </div>
 </section>

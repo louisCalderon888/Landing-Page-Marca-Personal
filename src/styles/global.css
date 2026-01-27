@@ -80,9 +80,67 @@
     @apply bg-gradient-to-r from-brand-blue via-brand-green to-brand-amber bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient;
   }
 
-  /* Premium Glass Card */
+  /* Premium Glass Card - ENHANCED */
   .glass-card {
     @apply bg-dark-900/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    @apply border-brand-blue/20;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(15, 76, 129, 0.1);
+  }
+
+  /* Premium Glass Card Variant - Green */
+  .glass-card-green:hover {
+    @apply border-brand-green/30;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(16, 185, 129, 0.15);
+  }
+
+  /* Premium Glass Card Variant - Amber */
+  .glass-card-amber:hover {
+    @apply border-brand-amber/30;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba(245, 158, 11, 0.12);
+  }
+
+  /* Ultra Premium Card with Glow Border */
+  .premium-card {
+    @apply relative bg-dark-900/60 backdrop-blur-2xl rounded-2xl overflow-hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(15, 76, 129, 0.3), rgba(16, 185, 129, 0.2), rgba(245, 158, 11, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .premium-card:hover::before {
+    opacity: 1;
+  }
+
+  .premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 60px -15px rgba(0, 0, 0, 0.6),
+      0 0 40px rgba(15, 76, 129, 0.15);
   }
 
   /* Grid Pattern Background - Subtler */
@@ -91,6 +149,28 @@
       linear-gradient(to right, rgba(51, 65, 85, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(51, 65, 85, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+
+  /* Tech Grid Pattern - More visible for tech feel */
+  .tech-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(15, 76, 129, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 76, 129, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Scanlines Overlay - Subtle tech effect */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px);
+    z-index: 1;
   }
 
   /* Noise Overlay */
@@ -107,15 +187,160 @@
     mix-blend-mode: overlay;
   }
 
-  /* Metric Number Style */
+  /* Metric Number Style - ENHANCED with glow */
   .metric-number {
     @apply font-mono text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter;
+  }
+
+  .metric-number-glow {
+    @apply font-mono text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter;
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  /* Data Terminal Style */
+  .data-terminal {
+    @apply font-mono;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    animation: dataFlicker 3s ease-in-out infinite;
   }
 
   /* Risk Badge */
   .risk-badge {
     @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-semantic-warning/10 text-semantic-warning border border-semantic-warning/20 text-xs uppercase tracking-widest font-bold;
   }
+
+  /* Glow Button - Primary Blue */
+  .btn-glow {
+    @apply relative overflow-hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #0F4C81, #10B981);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-glow:hover::before {
+    opacity: 0.6;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px -10px rgba(15, 76, 129, 0.5);
+  }
+
+  /* Glow Button - CTA Green */
+  .btn-glow-cta::before {
+    background: linear-gradient(135deg, #10B981, #F59E0B);
+  }
+
+  .btn-glow-cta:hover {
+    box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.5);
+  }
+
+  /* Pulse Dot - Live indicator */
+  .pulse-dot {
+    @apply w-2 h-2 rounded-full bg-brand-green;
+    animation: livePulse 2s ease-in-out infinite;
+  }
+
+  /* Badge with Glow */
+  .badge-glow {
+    @apply relative;
+    box-shadow: 0 0 20px rgba(15, 76, 129, 0.3);
+    animation: badgePulse 3s ease-in-out infinite;
+  }
+
+  /* Typing Cursor Effect */
+  .typing-cursor::after {
+    content: '|';
+    @apply text-brand-blue;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+/* Premium Animations */
+@keyframes livePulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(15, 76, 129, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(15, 76, 129, 0.5);
+  }
+}
+
+@keyframes dataFlicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
+
+  52% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Shimmer Effect for Loading States */
+.shimmer {
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
 
 /* Custom Utilities */
