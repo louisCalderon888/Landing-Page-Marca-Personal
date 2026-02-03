@@ -1,10 +1,20 @@
 /// <reference types="astro/client" />
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+// Supabase client initialization
+// For SSR/build time
+let supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+let supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// For client-side, read from meta tags if env vars are empty
+if (typeof window !== 'undefined' && (!supabaseUrl || !supabaseAnonKey)) {
+  const urlMeta = document.querySelector('meta[name="supabase-url"]');
+  const keyMeta = document.querySelector('meta[name="supabase-anon-key"]');
+  supabaseUrl = urlMeta?.getAttribute('content') || '';
+  supabaseAnonKey = keyMeta?.getAttribute('content') || '';
+}
+
+export const supabase: SupabaseClient = createClient(supabaseUrl || '', supabaseAnonKey || '');
 
 // Types for our tables
 export interface ContactSubmission {

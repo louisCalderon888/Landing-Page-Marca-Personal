@@ -16,6 +16,10 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Supabase config for client-side
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 ---
 
 <!DOCTYPE html>
@@ -27,6 +31,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Supabase Config (public anon key - safe to expose) -->
+    <meta name="supabase-url" content={supabaseUrl} />
+    <meta name="supabase-anon-key" content={supabaseAnonKey} />
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
