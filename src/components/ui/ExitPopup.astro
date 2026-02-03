@@ -168,12 +168,56 @@
     if (e.key === 'Escape') hidePopup();
   });
   
-  // Form submission
-  document.getElementById('popup-form')?.addEventListener('submit', (e) => {
+  // Form submission with Supabase
+  import { submitEmailLead } from '../../lib/supabase';
+  
+  const popupForm = document.getElementById('popup-form') as HTMLFormElement;
+  const popupSubmitBtn = popupForm?.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const originalPopupBtnText = popupSubmitBtn?.innerHTML;
+  
+  popupForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Here you would integrate with your email service
-    alert('¡Gracias! Te contactaremos pronto.');
-    hidePopup();
+    
+    const formData = new FormData(popupForm);
+    const email = formData.get('email') as string;
+    
+    // Get UTM params from URL if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = {
+      email,
+      source: 'exit_popup',
+      utm_source: urlParams.get('utm_source') || undefined,
+      utm_medium: urlParams.get('utm_medium') || undefined,
+      utm_campaign: urlParams.get('utm_campaign') || undefined,
+    };
+    
+    // Update button state
+    popupSubmitBtn.disabled = true;
+    popupSubmitBtn.innerHTML = 'Enviando...';
+    
+    try {
+      await submitEmailLead(data);
+      
+      // Success state
+      popupSubmitBtn.innerHTML = '✓ ¡Listo!';
+      popupSubmitBtn.classList.add('bg-brand-green');
+      
+      setTimeout(() => {
+        hidePopup();
+        popupSubmitBtn.disabled = false;
+        popupSubmitBtn.innerHTML = originalPopupBtnText;
+        popupSubmitBtn.classList.remove('bg-brand-green');
+      }, 1500);
+      
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      popupSubmitBtn.innerHTML = 'Error - Intenta de nuevo';
+      
+      setTimeout(() => {
+        popupSubmitBtn.disabled = false;
+        popupSubmitBtn.innerHTML = originalPopupBtnText;
+      }, 2000);
+    }
   });
 </script>
 
