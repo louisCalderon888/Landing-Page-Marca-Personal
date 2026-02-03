@@ -1,0 +1,6 @@
+Fecha,Hora,Tipo,Precio Entrada,Stop Loss,Take Profit,Precio Salida,Resultado (Puntos),R-Multiple,Estado,Notas
+2026-01-31,09:30,LONG,19500,19450,19600,19600,+100,+2.0R,GANANCIA,Ruptura de resistencia en apertura
+2026-01-30,14:15,SHORT,20100,20150,20000,20000,+100,+2.0R,GANANCIA,Rechazo en máximo histórico
+2026-01-29,10:00,LONG,19800,19750,19900,19750,-50,-1.0R,PERDIDA,Stop loss por volatilidad pre-FOMC
+2026-01-28,16:30,LONG,19650,19600,19750,,,0R,PENDIENTE,Esperando cierre
+2026-01-27,11:00,SHORT,20050,20100,19950,20050,0,0R,BREAKEVEN,SL movido a entrada
