@@ -13,16 +13,27 @@ Landing page profesional para la marca personal "Louis Calderon" - Trading algor
 - ✅ Animaciones y transiciones suaves
 - ✅ Paleta de colores personalizada para trading/finanzas
 - ✅ Lista para deploy en Vercel con CI/CD
+- ✅ **Integración Supabase** - Base de datos y Edge Functions
+- ✅ **Integración Brevo** - Email marketing automatizado
+
+## 📊 Stack Tecnológico
+
+| Capa | Tecnología |
+|------|------------|
+| Frontend | Astro 4.x + Tailwind CSS |
+| Backend | Supabase (PostgreSQL + Edge Functions) |
+| Email Marketing | Brevo (ex-Sendinblue) |
+| Hosting | Vercel |
 
 ## Requisitos
 - Node.js 18+ (Vercel usa 18/20 por defecto)
 - npm
+
 ## 📦 Instalación
 
 ```bash
 npm install
 ```
-
 
 ## Scripts
 - `npm run dev` – desarrollo
@@ -30,13 +41,25 @@ npm install
 - `npm run preview` – servir el build
 - `npm run lint` – `astro check`
 
-## Estructura
-- `src/pages/index.astro` – landing completa
-- `src/components/RiskNotice.astro` – avisos de riesgo personalizables
-- `src/components/ServiceCard.astro` – tarjetas de servicios
-- `src/styles/global.css` – Tailwind base + tipografías
-- `astro.config.mjs` – configuración Astro + Tailwind
-- `tailwind.config.cjs` / `postcss.config.cjs`
+## 📁 Estructura del Proyecto
+
+```
+├── src/
+│   ├── components/         # Componentes reutilizables
+│   │   ├── layout/         # Header, Footer
+│   │   ├── sections/       # Hero, Services, FAQ, etc.
+│   │   └── ui/             # Button, Card, Input, ExitPopup
+│   ├── layouts/            # BaseLayout
+│   ├── lib/                # supabase.ts (cliente)
+│   ├── pages/              # index.astro
+│   └── styles/             # global.css
+├── docs/                   # Documentación
+│   ├── PROJECT_DOCUMENTATION.md  # Documentación técnica completa
+│   ├── brevo-integration.md      # Guía de integración Brevo
+│   └── email-sequences.md        # Secuencias de email
+└── public/                 # Assets estáticos
+```
+
 ## 🎨 Paleta de Colores
 
 - **Primario**: `#1E3A8A` (azul confianza)
@@ -115,6 +138,32 @@ Abre [http://localhost:4321](http://localhost:4321)
 9. **Contacto**: Formulario y CTAs finales
 10. **Footer**: Links legales, redes sociales, disclaimers
 
+## 🔗 Integración Backend
+
+### Supabase (Base de Datos)
+- **Proyecto**: `LandingPageLouisCalderon`
+- **ID**: `rxnbcalyoinzghlgjjtz`
+- **Región**: us-east-1
+
+**Tablas:**
+| Tabla | Descripción |
+|-------|-------------|
+| `email_leads` | Leads del exit popup |
+| `contact_submissions` | Formularios de contacto |
+
+**Edge Functions:**
+| Función | Descripción |
+|---------|-------------|
+| `sync-to-brevo` | Sincroniza leads a Brevo |
+| `brevo-webhook` | Recibe eventos de Brevo |
+
+### Brevo (Email Marketing)
+- Listas configuradas: leads-frios (8), leads-mentoria (9), leads-senales (10), leads-desarrollo (11), clientes (12)
+- Webhook activo para tracking de emails
+- Sincronización automática via triggers
+
+📚 **Documentación completa**: Ver [docs/PROJECT_DOCUMENTATION.md](docs/PROJECT_DOCUMENTATION.md)
+
 ## ⚡ Performance
 
 - Fuentes optimizadas con `preconnect`
@@ -134,22 +183,26 @@ Asegúrate de incluir:
 
 ## 🎯 Próximos Pasos
 
-1. Personaliza todo el contenido placeholder
-2. Agrega tu foto profesional
-3. Integra Myfxbook widget
-4. Configura el formulario de contacto
-5. Conecta tu blog/CMS
-6. Agrega tracking analytics (Google Analytics, Plausible, etc.)
-7. Configura dominio personalizado en Vercel
-8. Implementa sistema de pagos (Stripe/PayPal) cuando estés listo
+1. ~~Configurar integración Brevo~~ ✅
+2. Crear secuencias de email automatizadas en Brevo
+3. Personaliza todo el contenido placeholder
+4. Agrega tu foto profesional
+5. Integra Myfxbook widget
+6. Conecta tu blog/CMS
+7. Agrega tracking analytics (Google Analytics, Plausible, etc.)
+8. Configura dominio personalizado en Vercel
+9. Implementa sistema de pagos (Stripe/PayPal) cuando estés listo
 
 ## 📞 Soporte
 
-Para preguntas sobre la implementación técnica, revisa la [documentación de Astro](https://docs.astro.build).
+Para preguntas sobre la implementación técnica:
+- [Documentación de Astro](https://docs.astro.build)
+- [Documentación de Supabase](https://supabase.com/docs)
+- [Documentación de Brevo](https://developers.brevo.com)
 
 ---
 
-**Hecho con Astro + Tailwind CSS**
+**Hecho con Astro + Tailwind CSS + Supabase + Brevo**
   ```json
   { "build": { "env": { "NODE_VERSION": "20" } } }
   ```
