@@ -1,95 +1,109 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import Hero from '../components/sections/Hero.astro';
-import TrackRecord from '../components/sections/TrackRecord.astro';
-import About from '../components/sections/About.astro';
-import Services from '../components/sections/Services.astro';
-import Philosophy from '../components/sections/Philosophy.astro';
-import FAQ from '../components/sections/FAQ.astro';
-import Contact from '../components/sections/Contact.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import TrackRecord from "../components/sections/TrackRecord.astro";
+import About from "../components/sections/About.astro";
+import Services from "../components/sections/Services.astro";
+import Philosophy from "../components/sections/Philosophy.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import Contact from "../components/sections/Contact.astro";
 
 // Import global styles
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
 <BaseLayout>
   <Header />
-  
+
   <main class="overflow-x-hidden">
     <!-- Hero Section -->
     <div class="reveal-on-scroll relative z-10">
       <Hero />
     </div>
-    
+
     <!-- Track Record overlaps Hero -->
     <div class="reveal-on-scroll delay-100 relative z-20 -mt-20 md:-mt-32">
       <TrackRecord />
     </div>
-    
+
     <!-- About Section with asymmetric spacing -->
     <div class="reveal-on-scroll delay-100 relative z-10 pt-12 md:pt-0">
       <About />
     </div>
-    
+
     <!-- Services overlaps About slightly -->
     <div class="reveal-on-scroll delay-100 relative z-10 -mt-12 md:-mt-16">
       <Services />
     </div>
-    
+
     <!-- Philosophy stands apart -->
     <div class="reveal-on-scroll delay-100 relative z-10">
       <Philosophy />
     </div>
-    
+
     <div class="reveal-on-scroll delay-100 relative z-10">
       <FAQ />
     </div>
-    
+
     <!-- Contact overlaps slightly -->
     <div class="reveal-on-scroll delay-100 relative z-10 -mt-12 pb-12">
       <Contact />
     </div>
 
     <!-- Partner Logos Section -->
-    <div class="reveal-on-scroll delay-100 relative z-10 py-12 bg-gradient-to-b from-background to-background/80">
+    <div
+      class="reveal-on-scroll delay-100 relative z-10 py-12 bg-gradient-to-b from-background to-background/80"
+    >
       <div class="container mx-auto px-6">
-        <h3 class="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
-         <!-- Herramientas que uso a diario -->
+        <h3
+          class="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider"
+        >
+          <!-- Herramientas que uso a diario -->
         </h3>
-        <div class="flex flex-wrap items-center justify-center gap-12 md:gap-16">
+        <div
+          class="flex flex-wrap items-center justify-center gap-12 md:gap-16"
+        >
           <!-- NinjaTrader Logo -->
-          <a 
-            href="https://ninjatraderdomesticvendor.sjv.io/MA9WEq" 
-            target="_blank" 
+          <a
+            href="https://ninjatraderdomesticvendor.sjv.io/MA9WEq"
+            target="_blank"
             rel="noopener noreferrer"
             class="transition-all duration-300 hover:scale-110 hover:opacity-80 grayscale hover:grayscale-0"
           >
-            <img 
-              src="/images/logos/ninjatrader-logo.png" 
-              alt="NinjaTrader" 
+            <img
+              src="/images/logos/ninjatrader-logo.png"
+              alt="NinjaTrader"
               class="h-12 md:h-16 w-auto object-contain"
+              width="200"
+              height="64"
+              loading="lazy"
+              decoding="async"
             />
           </a>
-          
+
           <!-- Kinetick Logo -->
-          <a 
-            href="https://kinetick.com/NinjaTrader" 
-            target="_blank" 
+          <a
+            href="https://kinetick.com/NinjaTrader"
+            target="_blank"
             rel="noopener noreferrer"
             class="transition-all duration-300 hover:scale-110 hover:opacity-80 grayscale hover:grayscale-0"
           >
-            <img 
-              src="/images/logos/kinetick-logo.png" 
-              alt="Kinetick" 
+            <img
+              src="/images/logos/kinetick-logo.png"
+              alt="Kinetick"
               class="h-12 md:h-16 w-auto object-contain"
+              width="200"
+              height="64"
+              loading="lazy"
+              decoding="async"
             />
           </a>
         </div>
       </div>
     </div>
   </main>
-  
+
   <Footer />
 </BaseLayout>

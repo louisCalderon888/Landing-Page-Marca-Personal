@@ -97,7 +97,7 @@ Soy Louis Calderon.
 
 Gracias por unirte. Te prometí algo real, así que aquí está:
 
-**Mi track record verificado:** https://louiscalderon.co/#track-record
+**Mi track record verificado:** https://www.myfxbook.com/members/InteligenciaCol/cartera-888/10524558
 - 94% ROI en 16 meses
 - -48% drawdown máximo (sí, también muestro eso)
 - 100% algorítmico
@@ -294,7 +294,7 @@ No hay magia. No hay "intuición de mercado". No hay "sentir el gráfico".
 
 **Hay proceso. Hay datos. Hay disciplina.**
 
-→ Ver track record completo: https://louiscalderon.co/#track-record
+→ Ver track record completo: https://www.myfxbook.com/members/InteligenciaCol/cartera-888/10524558
 
 **Louis**
 
